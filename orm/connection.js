@@ -5,8 +5,11 @@ const sequelize = new Sequelize('database', 'username', 'password', {
     storage: './migrations/db.sqlite'
   })
 
-  sequelize.authenticate().then(() => {
-    console.log('Connection has been established successfully.');
-  }).catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+  //Uncomment this ONLY WHEN you want to rebuild your database
+  // sequelize.sync({ force: true }).then(function(err) {
+  //   console.log('The table was successfully created!');
+  // }, function(err) {
+  //   console.log('An error occurred while creating the table:', err);
+  // });
+
+module.exports = sequelize
